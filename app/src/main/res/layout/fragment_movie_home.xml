@@ -78,14 +78,12 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_below="@id/btnSearch"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="181dp"
-        android:layout_marginEnd="183dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/_150sdp"
         android:visibility="gone"
-        android:layout_marginBottom="328dp" />
+         />
 
 <LinearLayout
     android:id="@+id/errorLayout"
