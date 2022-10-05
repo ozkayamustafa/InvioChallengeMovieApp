@@ -2,8 +2,12 @@ package com.mustafa.inviochallengemovieapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafa.inviochallengemovieapp.databinding.RowMovieListBinding
+import com.mustafa.inviochallengemovieapp.fragments.MovieDetailsFragmentDirections
+import com.mustafa.inviochallengemovieapp.fragments.MovieHomeFragment
+import com.mustafa.inviochallengemovieapp.fragments.MovieHomeFragmentDirections
 import com.mustafa.inviochallengemovieapp.model.MovieModel
 import com.mustafa.inviochallengemovieapp.model.Search
 
@@ -22,7 +26,10 @@ class MovieAdapter(
 
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         holder.binding.movie = movieList.get(position)
-
+        holder.itemView.setOnClickListener {
+            val action = MovieHomeFragmentDirections.actionMovieHomeFragmentToMovieDetailsFragment(searchModel = movieList.get(position))
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

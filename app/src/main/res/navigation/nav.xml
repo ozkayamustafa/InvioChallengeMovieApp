@@ -12,11 +12,22 @@
         tools:layout="@layout/fragment_movie_home" >
         <action
             android:id="@+id/action_movieHomeFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.mustafa.inviochallengemovieapp.fragments.MovieDetailsFragment"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="searchModel"
+            app:argType="com.mustafa.inviochallengemovieapp.model.Search" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_movieHomeFragment"
+            app:destination="@id/movieHomeFragment" />
+    </fragment>
 </navigation>

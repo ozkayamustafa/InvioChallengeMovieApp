@@ -8,4 +8,4 @@ data class Search (
     @SerializedName("imdbID" ) var imdbID : String? = null,
     @SerializedName("Type"   ) var Type   : String? = null,
     @SerializedName("Poster" ) var Poster : String? = null
-)
+):java.io.Serializable

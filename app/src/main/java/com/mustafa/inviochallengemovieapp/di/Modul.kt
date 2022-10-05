@@ -1,8 +1,11 @@
 package com.mustafa.inviochallengemovieapp.di
 
+import com.mustafa.inviochallengemovieapp.repository.IMovieDetailRepository
 import com.mustafa.inviochallengemovieapp.repository.IMovieSearchRepository
+import com.mustafa.inviochallengemovieapp.repository.MovieDetailRepository
 import com.mustafa.inviochallengemovieapp.repository.MovieSearchRepository
 import com.mustafa.inviochallengemovieapp.service.MovieAPI
+import com.mustafa.inviochallengemovieapp.service.MovieDetailAPI
 import com.mustafa.inviochallengemovieapp.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -30,5 +33,25 @@ class Modul {
     fun provideMovieRepository(api:MovieAPI):IMovieSearchRepository{
         return MovieSearchRepository(api)
     }
+
+
+    @Singleton
+    @Provides
+    fun  provideMovieDetailApi():MovieDetailAPI{
+        return Retrofit.Builder()
+            .baseUrl(Constant.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(MovieDetailAPI::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailRepository(api:MovieDetailAPI):IMovieDetailRepository{
+        return MovieDetailRepository(api = api)
+    }
+
+
+
+
 
 }

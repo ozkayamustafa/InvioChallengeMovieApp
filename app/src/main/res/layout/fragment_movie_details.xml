@@ -1,14 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+<data>
+    <variable
+        name="clicklable"
+        type="com.mustafa.inviochallengemovieapp.fragments.MovieDetailsFragment" />
+    <variable
+        name="data"
+        type="com.mustafa.inviochallengemovieapp.model.MovieDetailModel" />
+</data>
+<LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_fragment"
+    android:orientation="vertical"
     tools:context=".fragments.MovieDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+       <com.google.android.material.appbar.AppBarLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:orientation="horizontal"
+                 android:padding="@dimen/_7sdp"
+                 android:background="@color/bg_fragment"
+                 android:layout_height="match_parent">
+                     <ImageView
+                         android:id="@+id/back"
+                         android:layout_width="@dimen/_30sdp"
+                         android:layout_height="@dimen/_30sdp"
+                         android:src="@drawable/arrow_back"
+                         android:onClick="@{clicklable.backToHome}"
+                         android:contentDescription="back" />
 
-</FrameLayout>
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textColor="@color/white"
+                         android:text="Film Detay"
+                         android:layout_gravity="center"
+                         android:textSize="@dimen/_15ssp"
+                         android:layout_marginStart="@dimen/_90sdp"
+                         />
+             </LinearLayout>
+       </com.google.android.material.appbar.AppBarLayout>
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <ImageView
+          android:id="@+id/moviePoster"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/_320sdp"
+          android:layout_marginTop="@dimen/_15sdp"
+          android:adjustViewBounds="true"
+          android:foreground="@drawable/grandient_shape"
+          android:scaleType="fitXY"
+          android:urlImage="@{data.poster}"
+          />
+
+
+      <TextView
+          android:id="@+id/movieTitle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/moviePoster"
+          android:layout_marginStart="5dp"
+          android:layout_marginEnd="-5dp"
+          android:layout_marginTop="@dimen/_10sdp"
+
+          android:text="@{data.title}"
+          android:textColor="@color/white"
+          android:textSize="@dimen/_20ssp" />
+
+      <TextView
+          android:id="@+id/moviePlot"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/movieTitle"
+          android:padding="@dimen/_7sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:text="@{data.plot}"
+          android:textColor="#939292"
+          android:textSize="@dimen/_14ssp" />
+
+      <ProgressBar
+          android:id="@+id/progress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentEnd="true"
+          android:layout_marginTop="250dp"
+          android:visibility="gone"
+          android:layout_marginEnd="171dp"/>
+
+  </RelativeLayout>
+
+
+
+</LinearLayout>
+</layout>
