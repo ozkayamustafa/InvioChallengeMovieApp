@@ -36,7 +36,7 @@ class MovieAdapter(
         return movieList.size
     }
 
-    fun updateCountryList(newCountryList:ArrayList<Search>){
+    fun updateMovieList(newCountryList:ArrayList<Search>){
         movieList.clear()
         movieList.addAll(newCountryList)
         notifyDataSetChanged()
